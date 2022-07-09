@@ -19,6 +19,7 @@ class JavaStreamStudyApplicationTests {
         List<Integer>list2=Arrays.asList(4,5,6);
         List<Integer>list3=Arrays.asList(7,8,9);
         List<Integer> list4= Arrays.asList(10,0,-1);
+        
 
         Set<Integer> set= Stream.of(list1, list2, list3, list4)
                 .flatMap(Collection::stream)
@@ -27,6 +28,15 @@ class JavaStreamStudyApplicationTests {
         for(Integer s: set){
             System.out.println("s = " + s);
         }
+        List<Integer> list= Stream.of(list1, list2, list3, list4)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toSet())
+                .stream()
+                .collect(Collectors.toList());
+        for(Integer s: list){
+            System.out.println("s = " + s);
+        }
+
     }
 
 }
